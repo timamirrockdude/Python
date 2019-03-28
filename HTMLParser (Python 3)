@@ -1,0 +1,21 @@
+from html.parser import HTMLParser
+n = int(input())
+class MyHTMLParser(HTMLParser):
+    def handle_starttag(self, tag, attrs):
+        print("Start :", tag)
+        for val in attrs:
+            print("->",val[0],">",val[1])
+    def handle_endtag(self, tag):
+        print("End   :", tag)
+    def handle_startendtag(self, tag, attrs):
+        print("Empty :", tag)
+        for val in attrs:
+            print("->",val[0],">",val[1])
+
+parser=MyHTMLParser()
+
+html = ""
+for i in range(n):
+    html += input()
+
+parser.feed(html)
